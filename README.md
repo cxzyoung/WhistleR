@@ -106,7 +106,7 @@ devtools::install_github("zw-xjtlu/WhistleR")
 
 ## User's Guide
 
-For getting more information about the usage of WhistleR, type the following command after loading the package to view the instruction file:
+For getting more information about the usage of WhistleR, enter the following R command after installing the package to view the instruction file:
 
 ``` r
 WhistleR::WhistlerUsersGuide()

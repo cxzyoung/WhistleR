@@ -72,7 +72,7 @@ pseudo nucleotide composition method.
 
 <div class="figure" style="text-align: left">
 
-<img src="WhistleR_v1.0.png" alt="Feature extraction framework of WhistleR" width="100%" />
+<img src="inst/figures/WhistleR_v1.0.png" alt="Feature extraction framework of WhistleR" width="100%" />
 
 <p class="caption">
 
@@ -103,3 +103,12 @@ Installation from github can be initiated with the following command:
 ``` r
 devtools::install_github("zw-xjtlu/WhistleR")
 ```
+
+## Detailed User's Guide
+
+For getting specific information about the usage of WhistleR, type the following command after loading the package to view the instruction file:
+
+``` r
+WhistleR::WhistlerUsersGuide()
+```
+

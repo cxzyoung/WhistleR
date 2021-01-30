@@ -1,0 +1,26 @@
+---
+title: "WhistleR Package Introduction"
+author:   Zhen Wei, Daiyun Huang, Yu Zhong, Jia Meng
+date: "15 September 2020"
+output:
+  pdf_document:
+vignette: >
+  %\VignetteIndexEntry{WhistleR Package Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignettePackage{WhistleR}
+  %\VignetteEncoding{UTF-8}
+---
+**WhistleR** is a package for the extraction of comprehensive features on genomic intervals. A fundamental task in a genomic data science project is to extract informative genomic metrics that can predict quantities defined on range-based genomic annotations. In the past, the feature engineering tasks are often handled by a small number of handcrafted genome-derived features and sequence features. However, these methods cannot fully explore the interactive space between genomic regions and different genomic properties, such as the length and sequence contents.
+
+The methods implemented in the WhistleR package can extract a wide range of properties defined on genomic regions, including length, sequence contents, genomic scores, clustering effects, distance toward the 5'/3' ends, and the relative positions of annotation on regions. When extracting genomic features with its main function, various genome properties are interactively extracted from the genomic regions of exons, introns, genes, transcripts, promoters, 5'UTR, 3'UTR, and CDS, establishing a large collection of genome-derived feature set. The input data for WhistleR are any target genome annotation stored in a Granges object, for example, the target can be peaks or sites of genomic regulatory elements obtained by high-throughput sequencing assays such as par-CLIP, iCLIP, ChIP-Seq, miCLIP, and meRIP-Seq.
+
+Another important question in the analysis of functional genomic data is to identify the genomic factors that are highly correlated to the target, as these factors may be causally linked to the measurement of interest. WhistleR can also offer a catalog of highly interpretive genomic & sequence features, which helps to identify the biologically meaningful factors through the feature importance analysis of the predictive models.
+
+The full WhistleR User’s Guide can be accessed through the online documentation. To view the user’s Guide, install the WhistleR package and type:
+
+```{r}
+library(WhistleR)
+WhistlerUsersGuide()
+```
+
+The User’s Guide will be opened in the PDF viewer.

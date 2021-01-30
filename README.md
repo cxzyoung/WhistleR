@@ -104,7 +104,7 @@ Installation from github can be initiated with the following command:
 devtools::install_github("zw-xjtlu/WhistleR")
 ```
 
-## User's Guide
+## Complete User's Guide
 
 For getting more information about the usage of WhistleR, enter the following R command after installing the package to view the instruction file:
 

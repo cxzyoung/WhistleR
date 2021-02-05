@@ -1,7 +1,7 @@
 Package: WhistleR
 Type: Package
 Title: Comprehensive Annotation of Predictive Features for Range-based Genomic Data
-Version: 0.99.1
+Version: 0.99.2
 Authors@R: person("Zhen", "Wei", email = "zhen.wei10@icloud.com",
                   role = c("aut", "cre"))
 Description: Extract predictive genomic features using the interaction between genomic properties and genomic regions. WhistleR aims to facilitate feature engineering for the predictive modeling of genomic assays. The package can enumerate a large number of genome-derived features through the combination between genomic properties (e.g., region length, region topologies, region sequence content, region clustering effects, region scores) and genomic regions (e.g., exons, introns, promoters, 5'UTR, CDS, 3'UTR, transcripts, genes). Compared with only using sequence features, adding the comprehensive features of region properties can enhance the performance of predictive modeling. In addition, the region property features are highly interpretable via the regression analysis and the machine learning interpretation techniques, which can facilitate the identification of key factors affecting the targeted genomic quantities.

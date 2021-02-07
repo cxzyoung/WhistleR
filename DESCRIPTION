@@ -1,10 +1,10 @@
 Package: WhistleR
 Type: Package
-Title: Comprehensive Annotation of Predictive Features for Range-based Genomic Data
+Title: Comprehensive Annotation of Predictive Features for Interval-based Genomic Data
 Version: 0.99.2
 Authors@R: person("Zhen", "Wei", email = "zhen.wei10@icloud.com",
                   role = c("aut", "cre"))
-Description: Extract predictive genomic features using the interaction between genomic properties and genomic regions. WhistleR aims to facilitate feature engineering for the predictive modeling of genomic assays. The package can enumerate a large number of genome-derived features through the combination between genomic properties (e.g., region length, region topologies, region sequence content, region clustering effects, region scores) and genomic regions (e.g., exons, introns, promoters, 5'UTR, CDS, 3'UTR, transcripts, genes). Compared with only using sequence features, adding the comprehensive features of region properties can enhance the performance of predictive modeling. In addition, the region property features are highly interpretable via the regression analysis and the machine learning interpretation techniques, which can facilitate the identification of key factors affecting the targeted genomic quantities.
+Description: Extract predictive genome-derived features and sequence-derived features from genomic regions. WhistleR aims to facilitate the feature engineering process for predictive modeling of genomic data. The package can enumerate a large number of genome-derived features through the combinations between genomic properties (e.g., length, sequence contents, clustering metrics, conservation scores, distance toward ends, ect.) and genomic regions (e.g. 5'UTR, CDS, 3'UTR, exons, introns, promoters, transcripts, genes, ect.). Compared with only using the sequence-derived features, adding comprehensive features of region properties can significantly improve the predictive performance of various end applications in genomics. In addition, given that the interpretations of regional properties are highly intuitive, novel biological insights can be easily obtained through the feature importance analyses.
 License: LGPL (>= 3)
 Imports: BiocGenerics, Biostrings, GenomeInfoDb, GenomicRanges, GenomicScores, BSgenome, IRanges, ensembldb, matrixStats, methods, GenomicFeatures, gtools, stats, S4Vectors, utils
 Depends: R (>= 4.1)

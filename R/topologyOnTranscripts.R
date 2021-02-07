@@ -1,12 +1,12 @@
 #' @title Extracting the topology on transcripts
 #' 
-#' @description A function to extract meta-transcript topologies of the input GRanges object on a given transcript annotation.
+#' @description A function to extract meta-transcript topologies of the input GRanges object
 #' 
 #' @param x A \link{GRanges} object for the genomic ranges to be annotated.
 #' @param txdb A \link{TxDb} or \link{EnsDb} object for the transcript annotation.
 #' @param region_weights A numeric vector of length 3 indicating the weights for 5'UTR, CDS, and 3'UTR; default is \code{c(1/3,1/3,1/3)}.
 #' @param ambiguityMethod If \code{ambiguityMethod} is \code{"mean"} (default), \code{"sum"}, \code{"min"}, or \code{"max"},
-#' then the mean, sum, minimum, and maximum values of the >1 mapping will be returned in the output value.
+#' then the mean, sum, minimum, and maximum values of the multiple region mappings will be returned in the output value.
 #' @param ignore.strand When set to \code{TRUE}, the strand information is ignored in the overlap calculations.
 #' 
 #' @return A numeric vector with the same length as x. 
@@ -16,6 +16,8 @@
 #' The \code{rel_pos} for x instances not mapped to the region is equal to 1 or 0. Specifically,
 #' \code{rel_pos} is 1 if \code{x} overlaps at a downstream region,
 #' \code{rel_pos} is 0 if \code{x} overlaps at an upstream region. The topology values for \code{x} that is not mapped to any one of the 5'UTR, CDS, and 3'UTR will be set to \code{NA}.
+#' 
+#' The relative positions on a give region are directly extracted by the function \code{extractRegionRelativePosition()}.
 #' 
 #' @examples 
 #' ## Load the TxDb object
@@ -32,7 +34,7 @@
 #' ## Extract the meta-tx topology values
 #' topologyOnTranscripts(query_gr, txdb)
 #' 
-#' ## Visualize the logistic regression curve on binary classification of a m6A miCLIP dataset
+#' ## Visualize the logistic regression curve with B-splines on a m6A miCLIP classification data set
 #' 
 #' GSE63753_sysy <- readRDS(system.file("extdata", "GSE63753_sysy.rds", package = "WhistleR"))
 #' 

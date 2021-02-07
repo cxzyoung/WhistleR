@@ -1,4 +1,4 @@
-#' @title Extract sequence predictive features from range-based data
+#' @title Extract sequence-derived predictive features from interval-based data
 #' @description A function to extract sequence features from the input \code{\link{GRanges}} object and the \code{\link{BSgenome}} object.
 #' 
 #' @param x A \link{GRanges} object for the genomic ranges to be annotated, the \code{width} of x must all be equal.
@@ -15,12 +15,12 @@
 #' the second variable indicates that the nucleotide has an amino group (A or C), 
 #' and the third variable indicates the formation of weak hydrogen bond (A or T), 
 #' the fourth variable is calculated by the cumulative frequency of nucleotides from 
-#' the leftmost position to that position.
+#' the leftmost position to the current position.
 #' }
 #' }
 #' 
-#' @details The function first extract sequence within the genomic ranges defined by \code{x}. 
-#' Then, the sequences are processed according to the selected encoding method.
+#' @details The function first extract DNA sequence within the genomic ranges defined by \code{x}. 
+#' Then, the DNA strings are processed according to the selected sequence encoding method.
 #' 
 #' @return A \code{data.frame} object whose number of rows is the length of \code{x}, and the number of columns is 4 times the width of \code{x}.
 #' The column types in the \code{data.frame} are all numeric.

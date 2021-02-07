@@ -2,22 +2,22 @@
 #'
 #' @description A function used to extract the regions of a query sequence mapped to user defined sub-regions of the genome.
 #'
-#' @param motif a character string indicating the query sequence or motifs; Rules in \code{\link{IUPAC_CODE_MAP}} is supported when \code{Fixed} = FALSE.
+#' @param motif a character string indicating the query sequence or motifs; Vague mapping rules in \code{\link{IUPAC_CODE_MAP}} is supported when \code{Fixed} = FALSE.
 #'
-#' @param region the \code{\link{GRanges}} object used to define the subset of the genome.
+#' @param region the \code{\link{GRanges}} object used to define the subset region of the genome.
 #'
 #' @param sequence the \code{\link{BSgenome}} object containing the sequence of the genome.
 #'
-#' @param fixed FALSE to support the vague mapping rule of the chagracter string, default is FALSE.
+#' @param fixed FALSE to support the vague mapping rule of the character string, default is FALSE.
 #'
-#' @param N number of ranges sampled, by default, it returns all the ranges without sampling.
+#' @param N number of ranges sampled, by default, it returns all the matched ranges without sub-sampling.
 #'
 #' @param replace whether sample with replacement or not, default is FALSE.
 #'
-#' @return a \code{GRanges} object contains the (sampled) mapped regions of the query sequence on the defined subset of the genome.
+#' @return a \code{GRanges} object contains the (sampled) mapped regions of the query sequence on the given subset of the genome.
 #'
 #' @examples
-#' ## Retrieve the sequence "CG" on a defined exonic region
+#' ## Retrieve the dimer sequence "CG" on 3 exons of hg19
 #' library(TxDb.Hsapiens.UCSC.hg19.knownGene)
 #' library(BSgenome.Hsapiens.UCSC.hg19)
 #' exons_gr <- GRanges(c("chr1","chr2","chr2"),
@@ -27,9 +27,9 @@
 #' CpG_regions <- sampleSequence("GG", exons_gr, Hsapiens)
 #' 
 #' \dontrun{
-#' ## Sample 100000 ranges of RRACH motif on all exonic regions of hg19:
+#' ## Sample 100000 ranges of DRACH motif (the motif of m6A) on all exon regions of hg19:
 #' exons_hg19 <- exons(TxDb.Hsapiens.UCSC.hg19.knownGene)
-#' Motif_exons_hg19 <- sampleSequence("RRACH", exons_hg19, Hsapiens, N = 100000)
+#' Motif_exons_hg19 <- sampleSequence("DRACH", exons_hg19, Hsapiens, N = 100000)
 #' }
 #' 
 #' @importFrom GenomicRanges reduce GRanges

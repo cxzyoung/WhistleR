@@ -1,4 +1,4 @@
-#' @title Extract genome-derived predictive features for range-based annotation
+#' @title Extract genome-derived predictive features for interval-based data
 #' 
 #' @description A function to extract genome-derived features from the input \code{\link{GRanges}} object and the annotations specified by TxDb-like objects.
 #' 
@@ -26,10 +26,11 @@
 #' The column types in the \code{data.frame} are all numeric.
 #' 
 #' @details 
-#' The function first extract multiple genomic properties/attributes on the 14 region types defined by the TxDb-like object, 
-#' and then assign the attributes to \code{x} through the region closest to the instances of \code{x}. The specific behaviors of the assignments can be modified through the parameters of \code{ambiguityMethod} and \code{nomapValue}.
+#' The function first extract multiple genome-derived properties on x and 13 default region types defined by the TxDb-like object, 
+#' and it will then assign the region's properties to \code{x} if \code{x} overlapped with the region. 
+#' The specific behaviors of the assignments can be modified through the parameters of \code{ambiguityMethod} and \code{nomapValue}.
 #' 
-#' Particularly, the genome region types include \emph{\code{x}} (self), \emph{exons}, \emph{introns}, \emph{5'UTR} (exons only), \emph{full 5'UTR}, \emph{CDS} (exons only), \emph{full CDS}, 
+#' Particularly, the 13 default genome region types include \emph{exons}, \emph{introns}, \emph{5'UTR} (exons only), \emph{full 5'UTR}, \emph{CDS} (exons only), \emph{full CDS}, 
 #' \emph{3'UTR} (exons only), \emph{full 3'UTR}, \emph{mature transcripts}, \emph{full transcripts}, \emph{genes} (exons only), \emph{full genes}, and \emph{promoters}.
 #' 
 #' For each region type, the function can generate 5 types of basic properties accordingly: 
@@ -39,21 +40,22 @@
 #' \emph{distance to region 5'end}, and 
 #' \emph{distance to region 3'end.}
 #' 
-#' In addition, when the corresponding annotation objects are provided, the function can add 5 more types of properties. 
+#' In addition, when the corresponding annotation objects are provided, the function can add more types of properties. 
 #' Specifically, GC contents of regions are extracted if \code{sequence} is provided;
 #' Genomic Scores of the regions are extracted if \code{gscores} is provided; and
 #' Clustering effects of annotations on regions, including Count, Densities, and the Distance to the nearest annotation
 #' are calculated if \code{clusteringY} is provided. 
 #' 
-#' More region types and properties can be extracted if the \code{list} of objects are supplied at the corresponding arguments \code{extraRegions}, \code{gscores}, and \code{clusteringY}. 
-#' The names of the \code{list} elements will correspond to the labeling of the regions or properties in the column names of the returned table.
+#' Genomic regions other the 13 basic types can be defined by supplying the \code{list} of \code{GRanges} objects at \code{extraRegions}.
+#' Similarly, the input for \code{gscores}, and \code{clusteringY} can be a list so more than one properties can be added for these genomic metrics. 
+#' Please note that the \code{names} of the \code{list} elements will be used to generate the feature names in the output.
 #' 
-#' The returned properties and region types can be subsetted and augmented by with the arguments \code{properties}, \code{regions}, \code{supRegion}.
-#' 
-#' Finally, the function generate 3 extra features to describe the unique properties at the gene's level: 
+#' Finally, the function will generate 3 extra features to describe the properties uniquely defined at the gene's level: 
 #' \emph{gene's exon number}, 
-#' \emph{gene's transcript isoform number}, and 
+#' \emph{gene's transcript isoform number} and 
 #' \emph{meta-tx topology}.
+#' 
+#' Please see the package vignettes for the detailed information of those features.
 #' 
 #' @examples 
 #' ## ---------------------------------------------------------------------
@@ -76,7 +78,7 @@
 #' str(gfeatures)
 #'              
 #' ## ---------------------------------------------------------------------
-#' ## DEFINE MORE PROPERTIES AND REGIONS
+#' ## ADD MORE PROPERTIES AND REGIONS
 #' ## ---------------------------------------------------------------------
 #' \dontrun{
 #' library(BSgenome.Hsapiens.UCSC.hg19)
@@ -90,7 +92,7 @@
 #'                                             clusteringY=X) #quantify clustering properties of x itself
 #' str(gfeatures_expanded) 
 #'  
-#' ## Extract region properties features defined in Ensemble transcript annotation (EnsDb):
+#' ## Extract region properties features from Ensemble transcript annotation (EnsDb):
 #' library(EnsDb.Hsapiens.v75)
 #' 
 #' gfeatures_ensdb <- genomeDerivedFeatures(X,
